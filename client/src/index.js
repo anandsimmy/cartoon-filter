@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { OpenCvProvider } from 'opencv-react'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <OpenCvProvider openCvPath='https://docs.opencv.org/master/opencv.js'>
+      <App />
+    </OpenCvProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
