@@ -12,8 +12,8 @@ app.get('/filter', (req, res) => {
     var spawn = child_process.spawn;
     var process = spawn('python3', ['./image-filter.py'])
     process.stdout.on('data', (data) => {
-        console.log('data', data.toString())
-        res.send(data.toString());
+        console.log('data', data)
+        res.send(data);
       });
 })
 
