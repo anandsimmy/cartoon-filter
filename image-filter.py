@@ -5,7 +5,6 @@ num_down = 2
 num_bilateral = 7
 
 img_rgb = cv2.imread('test.jpg')
-print(img_rgb.shape)
 img_rgb = cv2.resize(img_rgb, (800, 800))
 
 img_color = img_rgb
@@ -32,9 +31,9 @@ img_edge = cv2.adaptiveThreshold(img_blur, 255,
 img_edge = cv2.cvtColor(img_edge, cv2.COLOR_GRAY2RGB)
 img_cartoon = cv2.bitwise_and(img_color, img_edge)
 
-cv2.imshow("cartoon", img_cartoon)
-k = cv2.waitKey(0)
-if k == 27:
-    cv2.destroyAllWindows()
-
-print('image cartoon', img_cartoon)
+# cv2.imshow("cartoon", img_cartoon)
+# k = cv2.waitKey(0)
+# if k == 27:
+#     cv2.destroyAllWindows()
+cv2.imwrite('test-filter.jpg', img_cartoon)
+print(img_cartoon)
