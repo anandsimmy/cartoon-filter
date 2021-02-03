@@ -17,7 +17,7 @@
   font-size: 72px;
 }
 
-.main input {
+.main input#url {
   height: 30px;
   width: 45%;
   border: 1px solid #4f3936;
@@ -28,8 +28,8 @@
   letter-spacing: 1px;
 }
 
-.main input:focus,
-.main input:active {
+.main input#url:focus,
+.main input#url:active {
   outline: none;
 }
 
