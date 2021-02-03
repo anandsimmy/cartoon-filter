@@ -1,10 +1,11 @@
+import sys
 import cv2
 import numpy as np
 
 num_down = 2
 num_bilateral = 7
 
-img_rgb = cv2.imread('test.jpg')
+img_rgb = cv2.imread(f"uploads/{sys.argv[1]}")
 img_rgb = cv2.resize(img_rgb, (800, 800))
 
 img_color = img_rgb
@@ -35,5 +36,5 @@ img_cartoon = cv2.bitwise_and(img_color, img_edge)
 # k = cv2.waitKey(0)
 # if k == 27:
 #     cv2.destroyAllWindows()
-cv2.imwrite('test-filter.jpg', img_cartoon)
-print(img_cartoon)
+
+cv2.imwrite('filter.jpg', img_cartoon)
