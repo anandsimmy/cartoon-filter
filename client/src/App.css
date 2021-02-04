@@ -17,36 +17,40 @@
   font-size: 72px;
 }
 
-.main input#url {
-  height: 30px;
-  width: 45%;
-  border: 1px solid #4f3936;
-  border-radius: 10px;
-  padding: 5px 10px 5px 30px;
-  margin-top: 10px;
-  background: rgb(102 153 146 / .1);
-  letter-spacing: 1px;
+.upload {
+  background-color: #4f3936;
+  width: 15%;
+  padding: 12px;
+  border-radius: 14px;
+  color: white;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 19px;
+  border: none;
 }
 
-.main input#url:focus,
-.main input#url:active {
+.upload:hover {
+  outline: none;
+  box-shadow: 0 0 7px 3px #6fa29b;
+  cursor: pointer;
+}
+
+.upload:focus,
+.upload:active {
   outline: none;
 }
 
-.main input::placeholder {
-  color: #4f3936;
-  font-size: 14px;
+
+.modal {
+  position: fixed;
+  top: 10%;
+  left: 15%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+  width: 1000px;
+  height: 600px;
+  display: none;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.show {
+  display: block;
 }
