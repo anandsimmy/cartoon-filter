@@ -6,7 +6,8 @@ num_down = 2
 num_bilateral = 7
 
 img_rgb = cv2.imread(f"uploads/{sys.argv[1]}")
-img_rgb = cv2.resize(img_rgb, (800, 800))
+h, w, c = img_rgb.shape
+img_rgb = cv2.resize(img_rgb, (w, h))
 
 img_color = img_rgb
 for _ in range(num_down):
@@ -30,6 +31,7 @@ img_edge = cv2.adaptiveThreshold(img_blur, 255,
                                  C=2)
 
 img_edge = cv2.cvtColor(img_edge, cv2.COLOR_GRAY2RGB)
+img_color = cv2.resize(img_rgb, (w, h))
 img_cartoon = cv2.bitwise_and(img_color, img_edge)
 
 # cv2.imshow("cartoon", img_cartoon)
