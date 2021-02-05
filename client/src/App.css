@@ -17,6 +17,14 @@
   font-size: 72px;
 }
 
+.overlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .upload {
   background-color: #4f3936;
   width: 15%;
@@ -43,14 +51,96 @@
 .modal {
   position: fixed;
   top: 10%;
-  left: 15%;
+  left: 8%;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.4);
-  width: 1000px;
+  background: rgba(255, 255, 255, 1);
+  width: 1200px;
   height: 600px;
   display: none;
 }
 
 .show {
   display: block;
+}
+
+.closeButton i {
+  position: absolute;
+  top: 10px;
+  right: 2%;
+  font-size: 40px;
+  color: black;
+  cursor: pointer;
+}
+
+.closeButton:hover i {
+  color: rgb(0, 174, 255)
+}
+
+.images {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.originalImageContainer,
+.cartoonImageContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.originalImageContainer button,
+.cartoonImageContainer button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #3a6e67;
+  font-size: 18px;
+  color: white;
+  font-family: cursive;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.originalImageContainer button:hover,
+.cartoonImageContainer button:hover {
+  box-shadow: 0 0 7px 3px #6fa29b;
+}
+
+.originalImageContainer button:active,
+.originalImageContainer button:focus,
+.cartoonImageContainer button:active,
+.cartoonImageContainer button:focus {
+  outline: none
+}
+
+.originalImageContainer i,
+.cartoonImageContainer i {
+  margin-left: 5px;
+}
+
+.original-image,
+.cartoon-image {
+  height: auto;
+  width: auto;
+  max-width: 500px;
+  max-height: 300px;
+  border-radius: 7px;
+}
+
+.convertIcon {
+  height: 100px;
+  width: 100px;
+}
+
+.modal-title {
+  margin: 20px 0 0 0;
+  padding: 0;
+  font-size: 40px;
+  font-family: inherit;
+  font-weight: 300;
+  color: #3a6e67;
 }

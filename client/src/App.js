@@ -3,22 +3,21 @@ import './App.css';
 
 const App=() => {
 
-  const [imgSrc, setImgSrc]= useState('')
+  const [originalImageUrl, setOriginalImageUrl]= useState('')
+  const [filteredImageUrl, setFilteredImageUrl]= useState('')
   const [uploadedImg, setUploadedImg]= useState('')
 
   const uploadImg= (e) => {
     setUploadedImg(e.target.files[0])
   }
 
-  useEffect(()=> {
-    const fetchImage= async () => {
-      let image= await fetch('/filter')
-      image= await image.blob()
-      const objectURL = URL.createObjectURL(image)
-      setImgSrc(objectURL)
-    }
-    // fetchImage()
-  }, [])
+  const closeModal= () => {
+      setFilteredImageUrl('')
+      const modal= document.querySelector('.modal')
+      const overlay= document.querySelector('.overlay')
+      modal.classList.remove('show')
+      overlay.classList.remove('show')
+  }
 
   const convertToBase64String= (file, cb) => {
     let myReader = new FileReader()
@@ -30,7 +29,8 @@ const App=() => {
     };
   }
 
-  const filterFile= async (file) => {
+  const filterImage= async (file) => {
+    setOriginalImageUrl(file)
     let image= await fetch('/filter', {
       method: 'POST',
       headers: {
@@ -43,23 +43,56 @@ const App=() => {
     })
     image= await image.blob()
     const objectURL = URL.createObjectURL(image)
-    setImgSrc(objectURL)
+    setFilteredImageUrl(objectURL)
   }
 
-  const uploadFileHandler= (e) => {
-    convertToBase64String(uploadedImg, filterFile)
-  }
+  useEffect(()=>{
+    const uploadFileHandler= () => {
+      convertToBase64String(uploadedImg, filterImage)
+    }
+    if(uploadedImg){
+      const modal= document.querySelector('.modal')
+      const overlay= document.querySelector('.overlay')
+      uploadFileHandler()
+      modal.classList.add('show')
+      overlay.classList.add('show')
+    }
+  }, [uploadedImg])
 
   return (
     <div className="App">
+      <div className='overlay' onClick={closeModal}></div>
       <div className="main">
-          <div>Cartoon Filter</div>
-          <input id='url' placeholder='Paste image url'></input>
-          <input type="file" id="myFile" onChange={uploadImg} accept="image/x-png,image/gif,image/jpeg,image/jpg,image/png"></input>
-          <button onClick={uploadFileHandler}>Convert</button>
-          {
-            imgSrc && <img src={imgSrc} id='cartoon' className='filter-image' />
-          }
+          { !filteredImageUrl &&
+            <>
+              <div className='title'>Cartoon Filter</div>
+              <button className="upload" onClick={()=>document.getElementById('uploadImage').click()}>Upload Image</button>
+            </>
+          }   
+          <input type="file" id="uploadImage" onChange={uploadImg}
+            accept="image/x-png,image/gif,image/jpeg,image/jpg,image/png" style={{display:'none'}}></input>
+          <div className="modal">
+            {
+              filteredImageUrl && 
+              <>
+                <div className='closeButton' onClick={closeModal}>
+                  <i class="fas fa-times"></i>
+                  </div>
+                <div className='modal-title'>Converted Successfully!</div>
+                <div className='images'>
+                  <div className='originalImageContainer'>
+                    <img src={originalImageUrl} id='original' className='original-image' />
+                    <button>Download Original <i class="fas fa-arrow-circle-down"></i></button>
+                  </div>
+                  <img src={'img/convert.png'} className='convertIcon' />
+                  <div className='cartoonImageContainer'>
+                    <img src={filteredImageUrl} id='cartoon' className='cartoon-image' />
+                    <button>Download <i class="fas fa-arrow-circle-down"></i></button>
+                  </div>
+                </div>
+              </>
+            }
+          </div>
       </div>
     </div>
   );
