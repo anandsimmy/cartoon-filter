@@ -117,6 +117,12 @@
   outline: none
 }
 
+.downloadLink{
+  text-decoration: none;
+  color: white;
+  font-family: 'Architects Daughter', cursive;
+}
+
 .originalImageContainer i,
 .cartoonImageContainer i {
   margin-left: 5px;
@@ -143,4 +149,50 @@
   font-family: inherit;
   font-weight: 300;
   color: #3a6e67;
+}
+
+@media (max-width:640px) {
+
+  .title {
+    font-size: 68px;
+  }
+
+  .upload{
+    width: 40%;
+  }
+
+  .modal {
+    width: 85%;
+    height: 600px;
+  }
+
+  .modal-title {
+    font-size: 26px;
+    margin: 20px 0 20px 0;
+  }
+
+  .closeButton i{
+    font-size: 27px;
+    right: 3%;
+  }
+
+  .images {
+    flex-direction: column;
+  }
+
+  .originalImageContainer button,
+  .cartoonImageContainer button {
+    font-size: 14px;
+  }
+
+  .original-image,
+  .cartoon-image {
+    max-width: 160px;
+  }
+
+  .convertIcon {
+    height: 40px;
+    width: 40px;
+    margin: 8px 0;
+  }
 }

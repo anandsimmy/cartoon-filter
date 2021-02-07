@@ -22,7 +22,6 @@ app.get('/filter', (req, res) => {
 
 app.post('/filter', async (req, res) => {
     let imageFileName= saveImage(req.body.img)
-    console.log('location', imageFileName)
     await spawn('python3', ['./image-filter.py', imageFileName])
     return res.sendFile(__dirname+'/filter.jpg')
 })
