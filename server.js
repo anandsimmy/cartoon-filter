@@ -1,18 +1,19 @@
 const express= require('express')
 const spawn= require('await-spawn')
 const cors= require('cors')
+var path = require('path');
 const { saveImage }= require('./utils/fileUpload.js')
 
 const app= express()
-const PORT= 5000
+const PORT= process.env.PORT || 5000
 
 app.use(express.json({limit: '50mb'}))
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send('API is running')
-})
+// app.get('/', (req, res) => {
+//     res.send('API is running')
+// })
 
 // app.get('/filter', (req, res) => {
 //     const spawn = child_process.spawn;
@@ -31,9 +32,11 @@ app.post('/filter', async (req, res) => {
 
 // This middleware informs the express application to serve our compiled React files
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+    console.log('hi from prod')
     app.use(express.static(path.join(__dirname, 'client/build')));
 
     app.get('*', function (req, res) {
+        console.log('hi from prod get')
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
 };
