@@ -18,7 +18,6 @@ app.post('/filter', async (req, res) => {
         return res.sendFile(__dirname+'/filter.jpg')
     }
     catch(err){
-        console.log('errmessage', err.message)
         console.error('err', err)
     }
 })
