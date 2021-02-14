@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Loader from './components/Loader'
 import './App.css';
 
 const App=() => {
@@ -63,17 +64,15 @@ const App=() => {
     <div className="App">
       <div className='overlay' onClick={closeModal}></div>
       <div className="main">
-          { !filteredImageUrl &&
-            <>
+          <>
               <div className='title'>Cartoon Filter</div>
               <button className="upload" onClick={()=>document.getElementById('uploadImage').click()}>Upload Image</button>
-            </>
-          }   
+          </>
           <input type="file" id="uploadImage" onChange={uploadImg}
             accept="image/x-png,image/gif,image/jpeg,image/jpg,image/png" style={{display:'none'}}></input>
           <div className="modal">
             {
-              filteredImageUrl && 
+              filteredImageUrl ?
               <>
                 <div className='closeButton' onClick={closeModal}>
                   <i class="fas fa-times"></i>
@@ -90,7 +89,7 @@ const App=() => {
                     <button><a className='downloadLink' href={filteredImageUrl} download='cartoon-filter.png'>Download <i class="fas fa-arrow-circle-down"></i></a></button>
                   </div>
                 </div>
-              </>
+              </> : <Loader />
             }
           </div>
       </div>
