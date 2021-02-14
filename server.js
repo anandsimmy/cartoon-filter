@@ -22,13 +22,10 @@ app.post('/filter', (req, res) => {
     }
 })
 
-// This middleware informs the express application to serve our compiled React files
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
-    console.log('hi from prod')
     app.use(express.static(path.join(__dirname, 'client/build')));
 
     app.get('*', function (req, res) {
-        console.log('hi from prod get')
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
 };

@@ -5,7 +5,7 @@ import './App.css';
 const App=() => {
 
   const [originalImageUrl, setOriginalImageUrl]= useState('')
-  const [filteredImageUrl, setFilteredImageUrl]= useState('')
+  const [filteredImageUrl, setFilteredImageUrl]= useState(false)
   const [uploadedImg, setUploadedImg]= useState('')
 
   const uploadImg= (e) => {
@@ -13,7 +13,7 @@ const App=() => {
   }
 
   const closeModal= () => {
-      setFilteredImageUrl('')
+      setFilteredImageUrl(false)
       const modal= document.querySelector('.modal')
       const overlay= document.querySelector('.overlay')
       modal.classList.remove('show')
