@@ -32,7 +32,7 @@ const App=() => {
 
   const filterImage= async (file) => {
     setOriginalImageUrl(file)
-    let image= await fetch('/filter', {
+    let image= await fetch('/cartoon', {
       method: 'POST',
       headers: {
         Accept: "application/json",

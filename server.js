@@ -11,10 +11,10 @@ app.use(express.json({limit: '50mb'}))
 
 app.use(cors());
 
-app.post('/filter', (req, res) => {
+app.post('/cartoon', (req, res) => {
     let imageFileName= saveImage(req.body.img)
     try{
-        child_process.execFileSync('python3', ['./image-filter.py', imageFileName])
+        child_process.execFileSync('python3', ['./cartoon-filter.py', imageFileName])
         return res.sendFile(__dirname+'/filter.jpg')
     }
     catch(err){
