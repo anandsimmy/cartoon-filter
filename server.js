@@ -1,5 +1,5 @@
 const express= require('express')
-const spawn= require('await-spawn')
+const child_process= require('child_process')
 const cors= require('cors')
 var path = require('path');
 const { saveImage }= require('./utils/fileUpload.js')
@@ -11,10 +11,10 @@ app.use(express.json({limit: '50mb'}))
 
 app.use(cors());
 
-app.post('/filter', async (req, res) => {
+app.post('/filter', (req, res) => {
     let imageFileName= saveImage(req.body.img)
     try{
-        await spawn('python3', ['./image-filter.py', imageFileName])
+        child_process.execFileSync('python3', ['./image-filter.py', imageFileName])
         return res.sendFile(__dirname+'/filter.jpg')
     }
     catch(err){
