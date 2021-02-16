@@ -81,12 +81,12 @@ const App=() => {
                 <div className='images'>
                   <div className='originalImageContainer'>
                     <img src={originalImageUrl} id='original' className='original-image' />
-                    <button><a className='downloadLink' href={filteredImageUrl} download='original.png'>Download Original <i class="fas fa-arrow-circle-down"></i></a></button>
+                    <a className='downloadLink' href={filteredImageUrl} download='original.png'><button>Download Original <i class="fas fa-arrow-circle-down"></i></button></a>
                   </div>
                   <img src={'img/convert.png'} className='convertIcon' />
                   <div className='cartoonImageContainer'>
                     <img src={filteredImageUrl} id='cartoon' className='cartoon-image' />
-                    <button><a className='downloadLink' href={filteredImageUrl} download='cartoon-filter.png'>Download <i class="fas fa-arrow-circle-down"></i></a></button>
+                    <a className='downloadLink' href={filteredImageUrl} download='cartoon-filter.png'><button>Download <i class="fas fa-arrow-circle-down"></i></button></a>
                   </div>
                 </div>
               </> : <Loader />

@@ -100,12 +100,13 @@
   background-color: #3a6e67;
   font-size: 18px;
   color: white;
-  font-family: cursive;
+  font-family: inherit;
   font-weight: 700;
   border: none;
   border-radius: 8px;
   letter-spacing: 1px;
   cursor: pointer;
+  width: 100%;
 }
 
 .originalImageContainer button:hover,
@@ -124,6 +125,7 @@
   text-decoration: none;
   color: white;
   font-family: 'Architects Daughter', cursive;
+  display: block;
 }
 
 .originalImageContainer i,
